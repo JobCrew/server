@@ -52,6 +52,14 @@ public class User extends BaseEntity {
     )
     private UserProfile profile;
 
+    /* === 연관관계 편의 메서드 === */
+    public void setProfile(UserProfile profile) {
+        this.profile = profile;
+        if (profile != null && profile.getUser() != this) {
+            profile.setUser(this); // 양방향 연관관계 동기화
+        }
+    }
+
     /* ==================== 정적 생성 ==================== */
 
     public static User create(String email) {

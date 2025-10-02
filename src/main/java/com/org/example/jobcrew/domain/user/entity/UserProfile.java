@@ -61,6 +61,8 @@ public class UserProfile extends BaseEntity {
     @Column(length = 100)
     private String region;          // 지역 (선택, 시 단위까지)
 
-
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Set<UserSkillTag> skill= new HashSet<>(); //보유스킬
 
 }

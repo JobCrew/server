@@ -46,7 +46,8 @@ public enum ErrorCode {
 
     /* ───────────[사용자]─────────── */
     INVALID_NICKNAME(HttpStatus.CONFLICT, "U001","이미 존재하는 닉네임입니다."),
-    INVALID_SKILL_TAG(HttpStatus.BAD_REQUEST, "U002", "존재하지 않는 스킬 태그입니다.");
+    INVALID_SKILL_TAG(HttpStatus.BAD_REQUEST, "U002", "존재하지 않는 스킬 태그입니다."),
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND,"U003","존재하지않는 유저 입니다.");
 
 
     /* Getter ― 럼북을 안 쓴 예시 */
