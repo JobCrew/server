@@ -42,7 +42,11 @@ public enum ErrorCode {
     AUTH_EXPIRED_REFRESH_TOKEN (HttpStatus.UNAUTHORIZED, "A004", "만료된 리프레시 토큰입니다. 다시 로그인해주세요."),
     AUTH_SOCIAL_ACCOUNT_NOT_FOUND(HttpStatus.NOT_FOUND,  "A005", "연결된 소셜 계정을 찾을 수 없습니다."),
     DUPLICATE_EMAIL            (HttpStatus.CONFLICT,    "A006", "이미 가입된 이메일입니다."),
-    AUTH_REFRESH_TOKEN_NOT_FOUND(HttpStatus.UNAUTHORIZED, "A007", "리프레시 토큰이 존재하지 않습니다.");
+    AUTH_REFRESH_TOKEN_NOT_FOUND(HttpStatus.UNAUTHORIZED, "A007", "리프레시 토큰이 존재하지 않습니다."),
+
+    /* ───────────[사용자]─────────── */
+    INVALID_NICKNAME(HttpStatus.CONFLICT, "U001","이미 존재하는 닉네임입니다."),
+    INVALID_SKILL_TAG(HttpStatus.BAD_REQUEST, "U002", "존재하지 않는 스킬 태그입니다.");
 
 
     /* Getter ― 럼북을 안 쓴 예시 */
