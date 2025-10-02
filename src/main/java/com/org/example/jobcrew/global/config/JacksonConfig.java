@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.InstantSerializer;
+import com.org.example.jobcrew.global.security.CustomUserDetails;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -25,8 +26,8 @@ public class JacksonConfig {
                 .modules(module)
                 .build();
 
-        // CustomMemberDetails 역직렬화 차단 (전역 설정)
-        mapper.addMixIn(CustomMemberDetails.class, CustomUserDetailsMixin.class);
+        // CustomUserDetails 역직렬화 차단 (전역 설정)
+        mapper.addMixIn(CustomUserDetails.class, CustomUserDetailsMixin.class);
 
         return mapper;
     }

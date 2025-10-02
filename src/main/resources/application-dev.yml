@@ -19,3 +19,6 @@ spring:
 
   elasticsearch:
     uris: ${ELASTICSEARCH_HOST}
+
+front:
+  url: http://localhost:8080

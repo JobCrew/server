@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User,Long>{
     Optional<User> findById(Long id);
-    Optional<User> findByUsername(String username);
+//    Optional<User> findByUsername(String username);
     Optional<User> findByEmail(String email);
     Optional<User> findBynickname(String nickname);
 
@@ -25,11 +25,11 @@ public interface UserRepository extends JpaRepository<User,Long>{
     @Query("SELECT u FROM User u WHERE u.email = :email")
     Optional<User> findByEmailForAuth(@Param("email") String email);
 
-    @Query("SELECT u.profile FROM User u WHERE u.profile.username = :username")
-    Optional<UserProfile> findByUsernameForAuth(@Param("username") String username);
+//    @Query("SELECT u.profile FROM User u WHERE u.profile.username = :username")
+//    Optional<UserProfile> findByUsernameForAuth(@Param("username") String username);
 
-    @Query("SELECT u.profile FROM User u WHERE u.profile.nickname = :nickname")
-    Optional<UserProfile> findByNickname(@Param("nickname") String nickname);
+    @Query("SELECT u.profile FROM User u WHERE u.nickname = :nickname")
+    Optional<User> findByNickname(@Param("nickname") String nickname);
 
     // 중복된 nickname이 있는지
     boolean existsByNickname(String Nickname);

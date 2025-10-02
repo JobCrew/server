@@ -16,16 +16,16 @@ class AuthManager {
     saveAuthInfo(user, token) {
         this.currentUser = user;
         this.token = token;
-        localStorage.setItem('howareyou_user', JSON.stringify(user));
-        localStorage.setItem('howareyou_token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('accessToken', token);
         this.updateUI();
     }
 
     // 로그인 정보 로드
     loadAuthInfo() {
-        const savedUser = localStorage.getItem('howareyou_user');
-        const savedToken = localStorage.getItem('howareyou_token');
-        
+        const savedUser = localStorage.getItem('user');
+        const savedToken = localStorage.getItem('accessToken');
+
         if (savedUser && savedToken) {
             this.currentUser = JSON.parse(savedUser);
             this.token = savedToken;
@@ -38,8 +38,8 @@ class AuthManager {
     clearAuthInfo() {
         this.currentUser = null;
         this.token = null;
-        localStorage.removeItem('howareyou_user');
-        localStorage.removeItem('howareyou_token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('accessToken');
         this.updateUI();
     }
 
@@ -116,7 +116,7 @@ class AuthManager {
                 const newToken = response.headers.get('Authorization')?.replace('Bearer ', '');
                 if (newToken) {
                     this.token = newToken;
-                    localStorage.setItem('howareyou_token', newToken);
+                    localStorage.setItem('jobcrew_token', newToken);
                     return true;
                 }
             }

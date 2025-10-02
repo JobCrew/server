@@ -43,6 +43,7 @@ public enum ErrorCode {
     AUTH_SOCIAL_ACCOUNT_NOT_FOUND(HttpStatus.NOT_FOUND,  "A005", "연결된 소셜 계정을 찾을 수 없습니다."),
     DUPLICATE_EMAIL            (HttpStatus.CONFLICT,    "A006", "이미 가입된 이메일입니다."),
     AUTH_REFRESH_TOKEN_NOT_FOUND(HttpStatus.UNAUTHORIZED, "A007", "리프레시 토큰이 존재하지 않습니다."),
+    UNSUPPORTED_PROVIDER(HttpStatus.UNAUTHORIZED,"A008","지원되지않는 소셜로그인 제공자입니다"),
 
     /* ───────────[사용자]─────────── */
     INVALID_NICKNAME(HttpStatus.CONFLICT, "U001","이미 존재하는 닉네임입니다."),

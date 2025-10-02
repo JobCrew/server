@@ -14,10 +14,9 @@ public class UserNicknameResponse {
     private String nickname;
 
     public static UserNicknameResponse from(User user) {
-        UserProfile profile = user.getProfile();
         return UserNicknameResponse.builder()
                 .userId(user.getId())
-                .nickname(profile != null ? profile.getNickname() : null)
+                .nickname(user.getNickname()) // 이제 User에서 직접 가져옴
                 .build();
     }
 }

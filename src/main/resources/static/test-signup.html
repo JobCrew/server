@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 테스트 - HowAreYou</title>
+    <title>회원가입 테스트</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .token-display {
@@ -213,12 +213,14 @@
             const provider = urlParams.get('provider');
             const profileCompleted = urlParams.get('profile_completed');
             const accessToken = urlParams.get('access_token');
+            const refreshToken = urlParams.get('refresh_token');   // ✅ 추가
             
             if (oauthSuccess === 'true') {
                 console.log('=== OAuth2 로그인 성공 ===');
                 console.log('공급자:', provider);
                 console.log('프로필 완료 여부:', profileCompleted);
                 console.log('Access Token:', accessToken ? accessToken.substring(0, 50) + '...' : '없음');
+                console.log('Refresh Token:', refreshToken ? refreshToken.substring(0, 50) + '...' : '없음');
                 
                 // URL 파라미터 정리
                 const newUrl = window.location.pathname;
@@ -233,6 +235,9 @@
                 if (accessToken) {
                     currentAccessToken = accessToken;
                     updateTokenDisplay();
+                }
+                if (refreshToken) {
+                    currentRefreshToken = refreshToken;   // ✅ 추가
                 }
                 
                 // 프로필이 완료된 경우 메인 페이지로 리다이렉트
@@ -397,6 +402,10 @@
         function closeTokenModal() {
             document.getElementById('tokenModal').classList.add('hidden');
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            new CommonHeader();
+        });
     </script>
 </body>
 </html> 

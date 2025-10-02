@@ -44,7 +44,6 @@ public class UserServiceImpl implements UserService {
         if (profile == null) { // 신규 생성
             profile = UserProfile.builder()
                     .user(user)
-                    .nickname(request.getNickname())
                     .username(request.getName())
                     .avatarUrl(request.getAvatarUrl())
                     .age(Integer.valueOf(request.getAge()))
@@ -59,7 +58,6 @@ public class UserServiceImpl implements UserService {
 
             user.setProfile(profile); // 연관관계 설정
         } else { // 기존 프로필 수정
-            profile.setNickname(request.getNickname());
             profile.setUsername(request.getName());
             profile.setAvatarUrl(request.getAvatarUrl());
             profile.setAge(Integer.valueOf(request.getAge()));
@@ -91,7 +89,7 @@ public class UserServiceImpl implements UserService {
         }
         User u = userRepository.findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
-        u.getProfile().setNickname(newNickname);
+        u.changeNickname(newNickname);
 
         // 멤버네임만 설정하고 토큰은 건드리지 않음
         // Access Token은 Auth ID 기반, Refresh Token은 UUID 기반으로 유지
@@ -99,26 +97,26 @@ public class UserServiceImpl implements UserService {
         return UserNicknameResponse.from(u);           // dirty-checking flush
     }
 
-    // username 으로 id 찾기
-     @Override
-    public Long getIdByUsername(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new CustomException(
-                        ErrorCode.USER_NOT_FOUND,
-                        String.format("사용자를 찾을 수 없습니다: username=%s", username)
-                ));
-        return user.getId();
-    }
+//    // username 으로 id 찾기
+//     @Override
+//    public Long getIdByUsername(String username) {
+//        User user = userRepository.findByUsername(username)
+//                .orElseThrow(() -> new CustomException(
+//                        ErrorCode.USER_NOT_FOUND,
+//                        String.format("사용자를 찾을 수 없습니다: username=%s", username)
+//                ));
+//        return user.getId();
+//    }
 
     //nickname 으로 id 찾기
     @Override
     public Long getIdByNickname(String nickname) {
-        UserProfile profile = userRepository.findByNickname(nickname)
+        User user = userRepository.findByNickname(nickname)
                 .orElseThrow(() -> new CustomException(
                         ErrorCode.USER_NOT_FOUND,
                         String.format("사용자를 찾을 수 없습니다: nickname=%s", nickname)
                 ));
-        return profile.getUser().getId();
+        return user.getId();
     }
 
 

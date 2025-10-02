@@ -18,8 +18,8 @@ public interface UserService {
     @Transactional
     UserNicknameResponse setNickname(Long id, UserNicknameRequest req, HttpServletResponse res);
 
-    // username 으로 id 찾기
-    Long getIdByUsername(String username);
+//    // username 으로 id 찾기
+//    Long getIdByUsername(String username);
 
     Long getIdByNickname(String nickname);
 }

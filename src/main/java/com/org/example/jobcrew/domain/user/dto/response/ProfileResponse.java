@@ -49,7 +49,6 @@ public class ProfileResponse {
     /* ==================== 정적 팩토리 메서드 ==================== */
     public static ProfileResponse fromEntity(UserProfile profile, Set<UserSkillTag> skills) {
         return ProfileResponse.builder()
-                .nickname(profile.getNickname())
                 .username(profile.getUsername())
                 .age(profile.getAge())
                 .avatarUrl(profile.getAvatarUrl())

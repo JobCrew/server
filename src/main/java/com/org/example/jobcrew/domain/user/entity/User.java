@@ -30,6 +30,9 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
+    @Column(nullable = false, length = 50)
+    private String nickname;        // 닉네임, 필수
+
     @Column(nullable = false)
     @Builder.Default
     private boolean active = true;       // 활성화 여부
@@ -60,6 +63,14 @@ public class User extends BaseEntity {
         }
     }
 
+    public void changeNickname(String newNickname) {
+        this.nickname = newNickname;
+    }
+
+    /** 프로필 완료 여부 */
+    public boolean isProfileCompleted() {
+        return this.profile != null && this.profile.isCompleted();
+    }
     /* ==================== 정적 생성 ==================== */
 
     public static User create(String email) {

@@ -15,7 +15,7 @@ class CommonHeader {
         header.innerHTML = `
             <div class="header-container">
                 <div class="header-left">
-                    <a href="/" class="logo">🔧 HowAreYou</a>
+                    <a href="/" class="logo">🔧 JobCrew</a>
                 </div>
                 <div class="header-center">
                     <nav class="main-nav">
