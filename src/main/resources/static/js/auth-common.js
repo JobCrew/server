@@ -116,7 +116,7 @@ class AuthManager {
                 const newToken = response.headers.get('Authorization')?.replace('Bearer ', '');
                 if (newToken) {
                     this.token = newToken;
-                    localStorage.setItem('jobcrew_token', newToken);
+                    localStorage.setItem('accessToken', newToken);
                     return true;
                 }
             }
